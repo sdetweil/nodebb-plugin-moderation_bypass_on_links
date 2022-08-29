@@ -1,7 +1,7 @@
 {
 	"id": "nodebb-plugin-moderation_on_links",
 	"url": "https://github.com/sdetweil/nodebb-plugin-moderation_on_links",
-	"library": "./library.js",
+	"main": "./library.js",
 	"hooks": [
 		{
 			"hook": "static:app.load", "method": "init"
@@ -12,7 +12,6 @@
 		{
 			"hook":"filter:post.shouldQueue", "method": "postQueue"
 		}
-
 	],
 	"staticDirs": {
 		"static": "./static"

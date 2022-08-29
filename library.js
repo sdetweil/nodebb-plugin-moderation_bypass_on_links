@@ -56,7 +56,7 @@ plugin.postQueue = function (postData) {
 		postData.shouldQueue = false;
 
 		/*for (let link of postData.getlinks()){
-			if (!checkLink(link)) {
+			if (!plugins.checkLink(link)) {
 				// bad link, send it to moderation queue
 				postData.shouldQueue = true;
 				// no need to check others, one bad link is enough
@@ -70,7 +70,7 @@ plugin.postQueue = function (postData) {
 	return postData;
 };
 
-checkLink = function(link) {
+plugins.checkLink = function(link) {
 
 
 	if(plugin.our_host === ''){
