@@ -3,6 +3,7 @@ const controllers = require('./lib/controllers');
 const nconf = module.parent.require('nconf');
 const winston = require.main.require('winston');
 const meta = require.main.require('./src/meta');
+const Posts = require.main.require('./src/posts');
 
 /*  new code   */
 
@@ -48,21 +49,29 @@ plugin.addAdminNavigation = function (header, callback) {
 	callback(null, header);
 };
 
-plugin.postQueue = function (postData) {
+plugin.postQueue = async function (postData) {
 	try {
 		// assume no links, or good links
 		// let the post pass on thru
-		console.log("postQueue="+JSON.stringify(postData,null,2))
+		const mockPost = { content: postData.data.content };
+		await Posts.parsePost(mockPost);
+		console.log(mockPost.content)
+		const regex = /href=\"([^"]*)"/ig;
+		let links=mockPost.content.match(regex)
+		console.log("post data="+JSON.stringify(mockPost.content.match(regex),null,2))
 		postData.shouldQueue = false;
 
-		/*for (let link of postData.getlinks()){
-			if (!plugins.checkLink(link)) {
+		for (let link of links){
+			console.log("x="+link)
+			link=link.slice(6,-1)
+			console.log("x1="+link)
+			if (!plugin.checkLink(link)) {
 				// bad link, send it to moderation queue
 				postData.shouldQueue = true;
 				// no need to check others, one bad link is enough
 				break;
 	  	}
-	  } */
+	  }
 	} catch (error) {
 		console.error("oops. postQueue error=",error)
 	}
@@ -70,11 +79,11 @@ plugin.postQueue = function (postData) {
 	return postData;
 };
 
-plugins.checkLink = function(link) {
+plugin.checkLink = function(link) {
 
 
 	if(plugin.our_host === ''){
-		plugin.our_host=nconf.get('url').toLowerCase().split('/')[2].split(':')[0]
+		plugin.our_host=nconf.get('url').toLowerCase().split('/')[2] //.split(':')[0]
 		// add our url to the list
 		plugin.allowed_hosts.push(plugin.our_host)
 	}
@@ -92,10 +101,10 @@ plugins.checkLink = function(link) {
 	}
 
 	// get just the host from the link
-	let link_host = link.toLowerCase().split('/')[2].split(':')[0]
+	let link_host = link.toLowerCase().split('/')[2] //.split(':')[0]
 
-	if(allowed_hosts.includes(link_host)){
-		  console.log("allowed link")
+	if(plugin.allowed_hosts.includes(link_host)){
+		  console.log("allowed link to="+link_host)
 			return true
 		}
 		else{

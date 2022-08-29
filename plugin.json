@@ -1,7 +1,7 @@
 {
 	"id": "nodebb-plugin-moderation_on_links",
 	"url": "https://github.com/sdetweil/nodebb-plugin-moderation_on_links",
-	"main": "./library.js",
+	"main": "./index.js",
 	"hooks": [
 		{
 			"hook": "static:app.load", "method": "init"
