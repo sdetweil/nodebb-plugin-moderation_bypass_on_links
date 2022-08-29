@@ -94,12 +94,14 @@ checkLink = function(link) {
 	// get just the host from the link
 	let link_host = link.toLowerCase().split('/')[2].split(':')[0]
 
-	if(allowed_hosts.includes(link_host))
+	if(allowed_hosts.includes(link_host)){
 		  console.log("allowed link")
 			return true
-		else
+		}
+		else{
 			console.log("link to host "+ link_host+" not allowed")
 			return false;
+		}
 
 };
 
