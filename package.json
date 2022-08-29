@@ -3,13 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdetweil/nodebb-plugin-moderation_on_links"
+  },
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "nodebb",
+    "plugin",
+    "moderation",
+    "out of scope links"
+  ],
+  "author": "Sam Detweiler",
   "license": "ISC"
 }

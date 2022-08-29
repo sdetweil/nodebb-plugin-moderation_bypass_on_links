@@ -1,8 +1,8 @@
 <div class="row">
-	<div class="col-sm-2 col-xs-12 settings-header">Category Settings</div>
+	<div class="col-sm-2 col-xs-12 settings-header">Valid Link destinations</div>
 	<div class="col-sm-10 col-xs-12">
 		<p class="lead">
-			Select categories to automatically queue topics from.
+			enter .
 		</p>
 		<div class="row category-defaults">
 			<form role="form" class="category-queue-settings">

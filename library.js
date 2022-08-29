@@ -53,14 +53,15 @@ plugin.postQueue = function (postData, callback) {
 		// assume no links, or good links
 		// let the post pass on thru
 		postData.shouldQueue = false;
-		for (let link of postData.getlinks()){
+		console.log(JSON.stringify(postData,null,2))
+		/*for (let link of postData.getlinks()){
 			if (!checkLink(link)) {
 				// bad link, send it to moderation queue
 				postData.shouldQueue = true;
 				// no need to check others, one bad link is enough
 				break;
 	  	}
-	  }
+	  } */
 	} catch (error) {
 
 	}

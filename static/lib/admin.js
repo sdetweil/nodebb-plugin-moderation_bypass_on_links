@@ -1,18 +1,18 @@
 'use strict';
 
 /* globals $, app, socket, define */
-
-define('admin/plugins/category-queue', ['settings'], function (Settings) {
+const our_admin="/plugins/post-link-list"
+define('admin'+ our_admin, ['settings'], function (Settings) {
 	var ACP = {};
 
 	ACP.init = function () {
-		Settings.load('category-queue', $('.category-queue-settings'));
+		Settings.load('post-link-list', $('.post-link-list'));
 
 		$('#save').on('click', function () {
-			Settings.save('category-queue', $('.category-queue-settings'), function () {
+			Settings.save('post-link-list', $('.post-link-list'), function () {
 				app.alert({
 					type: 'success',
-					alert_id: 'category-queue-saved',
+					alert_id: 'post-link-list-saved',
 					title: 'Settings Saved',
 					message: 'Please reload your NodeBB to apply these settings',
 					clickfn: function () {
