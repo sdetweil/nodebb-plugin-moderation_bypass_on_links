@@ -48,7 +48,7 @@ plugin.addAdminNavigation = function (header, callback) {
 	callback(null, header);
 };
 
-plugin.postQueue = function (postData, callback) {
+plugin.postQueue = function (postData) {
 	try {
 		// assume no links, or good links
 		// let the post pass on thru
@@ -67,7 +67,7 @@ plugin.postQueue = function (postData, callback) {
 		console.error("oops. postQueue error=",error)
 	}
 
-	callback(null, postData);
+	return postData;
 };
 
 checkLink = function(link) {
