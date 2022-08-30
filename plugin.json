@@ -11,6 +11,9 @@
 		},
 		{
 			"hook":"filter:post.shouldQueue", "method": "postQueue"
+		},
+		{
+			"hook":"filter:middleware.renderHeader", "method": "onAdmin"
 		}
 	],
 	"staticDirs": {
