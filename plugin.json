@@ -14,7 +14,11 @@
 		},
 		{
 			"hook":"filter:middleware.renderHeader", "method": "onAdmin"
+		},
+		{
+			"hook":"action:settings.set", "method": "actionSettingsSet"
 		}
+
 	],
 	"staticDirs": {
 		"static": "./static"
