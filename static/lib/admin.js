@@ -72,12 +72,12 @@ define('admin/plugins/post_link_list', ['settings','alerts'], function (Settings
 			$('#urls').find('input[type="text"]').each(function() {
 			    selected.push($(this).attr('value'));
 			});
-
-			console.log("urls to save=",selected)
+			let foo = {urls:selected}
+			console.log("urls to save=",selected, foo)
 
 			//let sss=['github.com', 'pastebin.com','projects.raspberrypi.org', "forum.magicmirror.builders",'docs.magicmirror.builders'];
 			try {
-			Settings.save(our_keya,selected, (err,sss)=>{
+			Settings.set(our_keya,{urls:selected}) /*, (err,sss)=>{
 				if(err){
 					console.log("error during save",err)
 				} else {
@@ -93,7 +93,7 @@ define('admin/plugins/post_link_list', ['settings','alerts'], function (Settings
 						},
 					});
 				}
-			})
+			}) */
 			} catch(error){
 				console.log("save error=",error)
 			}

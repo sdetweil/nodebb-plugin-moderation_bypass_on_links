@@ -45,28 +45,27 @@ plugin.init = function (params, callback) {
 	// get the default settings
 	plugin.settings = plugin.allowed_hosts
 	// get our plugin  info , if set
-	meta.settings.get(our_key, function(err, settings) {
-		console.log(our_admin+" retrieved settings ", err, settings)
-		if (err) {
-			winston.error('['+our_key+'] Could not retrieve plugin settings!, using defaults');
-			//return;
-		}
-		else {
-			// hm, got here with no data.. ???
-			console.log(our_admin+" init found our settings ", settings)
-			//plugin.settings = settings;
-		}
-	});
-	console.log(our_admin +" leaving init")
+	console.log("trying to call meta set")
+	meta.settings.setOne(our_key, 'urls',["something.com"]) /*function(err, settings) {
+		 if(err){
+		 	  console.log("set failed=",err)
+		 } else {
+		 	console.log("set not failed")
+		 }
+	})*/
+	console.log("trying to call meta get")
+	let ss =meta.settings.getOne(our_key, "urls")
+	console.log(our_admin +" leaving init ss=",ss)
 	callback();
 };
 
 // watch dor data save
 plugin.actionSettingsSet = async function (hookData) {
-	console.log("settings saved for ", hookData)
+	console.log(our_key+" settings saved for ", hookData)
   if (hookData.plugin === our_key) {
-     // plugin.settings = await meta.settings.get(our_key);
-      console.log("settings reloaded=",plugin.settings);
+  		 let s = await meta.settings.getOne(our_key, "urls");
+      //plugin.settings =
+      console.log(our_key+" settings reloaded=",s);
   }
 };
 // add our admin page to the plugin menu in admin
