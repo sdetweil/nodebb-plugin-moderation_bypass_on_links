@@ -63,8 +63,10 @@ plugin.init = function (params, callback) {
 
 // watch dor data save
 plugin.actionSettingsSet = async function (hookData) {
+	console.log("settings saved for ", hookData)
   if (hookData.plugin === our_key) {
-      plugin.settings = await meta.settings.get(our_key);
+     // plugin.settings = await meta.settings.get(our_key);
+      console.log("settings reloaded=",plugin.settings);
   }
 };
 // add our admin page to the plugin menu in admin
@@ -81,7 +83,7 @@ plugin.addAdminNavigation = function (header, callback) {
 
 // add our data for the template to use
 plugin.onAdmin = function (data, callback) {
-			console.log(our_key+" onAdmin called")
+		console.log(our_key+" onAdmin called")
 		data.templateValues[our_key] = plugin.settings;
 		console.log(our_key+" onAdmin called data=",data.templateValues[our_key] )
     callback(null, data);

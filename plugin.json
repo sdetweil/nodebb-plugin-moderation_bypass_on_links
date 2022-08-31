@@ -1,7 +1,7 @@
 {
 	"id": "nodebb-plugin-moderation_on_links",
 	"url": "https://github.com/sdetweil/nodebb-plugin-moderation_on_links",
-	"main": "./index.js",
+	"library": "./index.js",
 	"hooks": [
 		{
 			"hook": "static:app.load", "method": "init"
@@ -26,8 +26,8 @@
 	"less": [
 		"static/style.less"
 	],
-	"acpScripts": [
-		"static/lib/admin.js"
-	],
-	"templates": "static/templates"
+	"templates": "static/templates",
+	"modules": {
+   		"../admin/plugins/post_link_list.js": "static/lib/admin.js"
+  	}
 }
