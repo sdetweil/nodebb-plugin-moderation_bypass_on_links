@@ -1,11 +1,11 @@
 {
-  "name": "nodebb-plugin-moderation_on_links",
+  "name": "nodebb-plugin-moderation_bypass_on_links",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sdetweil/nodebb-plugin-moderation_on_links"
+    "url": "https://github.com/sdetweil/nodebb-plugin-moderation_bypass_on_links"
   },
   "directories": {
     "lib": "lib"
