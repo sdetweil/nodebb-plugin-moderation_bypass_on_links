@@ -1,6 +1,6 @@
 {
-	"id": "nodebb-plugin-moderation_on_links",
-	"url": "https://github.com/sdetweil/nodebb-plugin-moderation_on_links",
+	"id": "nodebb-plugin-moderation_bypass_on_links",
+	"url": "https://github.com/sdetweil/nodebb-plugin-moderation_bypass_on_links",
 	"library": "./index.js",
 	"hooks": [
 		{

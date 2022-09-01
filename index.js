@@ -12,24 +12,25 @@ const plugin = {};
 
 plugin.our_host =''
 
+const our_key= __dirname.split('-').reverse()[0]
 // only use the literal in pne place
-const our_admin="/plugins/post_link_list"
+const our_admin="/plugins/"+our_key
 // get the key part
-const our_key = our_admin.split('/')[2]
+//const our_key = ourname //our_admin.split('/')[2]
 // default (test) hosts
 plugin.allowed_hosts=['github.com', 'pastebin.com','projects.raspberrypi.org', "forum.magicmirror.builders",'docs.magicmirror.builders']
 
 // init function
 plugin.init = function (params, callback) {
 
-  console.log(our_admin +" entering init")
+  console.log(our_admin +" entering init, params=", __dirname)
 
   // go to the rener link
 	let renderAdminPage = function (req, res , next) {
 		console.log('admin'+our_admin +" renderAdminPage called, settings=",plugin.settings)
-		res.render('admin'+our_admin, {
-			post_link_list: plugin.settings
-		});
+		let params = {}
+		parms[our_key]=plugin.settings
+		res.render('admin'+our_admin, params);
 	};
 
 	const router = params.router;

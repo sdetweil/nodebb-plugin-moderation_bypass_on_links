@@ -2,22 +2,16 @@
 
 /* globals $, app, socket, define */
 const ACP = {};
-const our_admina="/plugins/post_link_list"
-const our_keya = our_admina.split('/')[2]
-const our_data = {}
-our_data.items=""
+
+const our_keya= __dirname.split('-').reverse()[0]
+const our_admina="/plugins/"+our_keya
+
 define('admin/plugins/post_link_list', ['settings','alerts'], function (Settings,alerts) {
 	//var ACP = {};
 	console.log(our_admina+ " admin define running")
 
 	ACP.init = function () {
 		console.log(our_keya+" ACP init running")
-		/*Settings.load(our_keya, our_data.items, (v)=>{console.log("settings loaded", v)
-
-		//$('.'+our_keya+'_settings').val(['github.com', 'pastebin.com','projects.raspberrypi.org', "forum.magicmirror.builders",'docs.magicmirror.builders'])
-		console.log(our_keya+" loaded our data= ", our_data.items )
-		});*/
-
 
 		$('#delete').on('click', function () {
 			console.log(our_keya +" delete clicked ")
@@ -77,7 +71,7 @@ define('admin/plugins/post_link_list', ['settings','alerts'], function (Settings
 
 			//let sss=['github.com', 'pastebin.com','projects.raspberrypi.org', "forum.magicmirror.builders",'docs.magicmirror.builders'];
 			try {
-			Settings.set(our_keya,{urls:selected}) /*, (err,sss)=>{
+			Settings.set(our_keya,{urls:selected}, (err,sss)=>{
 				if(err){
 					console.log("error during save",err)
 				} else {
@@ -93,22 +87,11 @@ define('admin/plugins/post_link_list', ['settings','alerts'], function (Settings
 						},
 					});
 				}
-			}) */
+			})
 			} catch(error){
 				console.log("save error=",error)
 			}
-		/*	meta.settings.set(our_key, function(err, sss) {
-				console.log("settings save completed")
-				alerts.alert({
-					type: 'success',
-					alert_id: our_keya+'-saved',
-					title: 'Settings Saved',
-					message: 'Please reload your NodeBB to apply these settings',
-					clickfn: function () {
-						socket.emit('admin.reload');
-					},
-				});
-			}) */
+
 			console.log(our_keya +" settings save executed")
 		});
 	};
