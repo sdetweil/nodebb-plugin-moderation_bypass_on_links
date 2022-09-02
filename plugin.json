@@ -28,6 +28,6 @@
 	],
 	"templates": "static/templates",
 	"modules": {
-   		"../admin/plugins/post_link_list.js": "static/lib/admin.js"
+   		"../admin/plugins/moderation_bypass_on_links.js": "static/lib/admin.js"
   	}
 }
